@@ -12,16 +12,16 @@ const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-pro"});
 
 async function gemini(prompt) {
-
+    if (prompt == null || prompt === undefined) return "invalid Prompt";
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
-    console.log(text);
     return text;
 }
 
 app.get('/translate/:input?', async (req, res) => {
-    let prompt = req.params.input;
+    let prompt = "";
+    if (req.params.input) prompt = req.params.input;
     let response = await gemini(prompt);
     res.json({
         message: response
