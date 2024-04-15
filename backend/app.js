@@ -19,7 +19,7 @@ async function gemini(prompt) {
     return text;
 }
 
-app.get('/translate/:input?', async (req, res) => {
+app.get('/result/:input?', async (req, res) => {
     let prompt = "";
     if (req.params.input) prompt = req.params.input;
     let response = await gemini(prompt);

@@ -9,7 +9,7 @@ function App() {
   const [placeholder, setPlaceholder] = useState("Enter here...");
   async function fetchOutput() {
     try {
-        let api = "http://localhost:3000/translate/";
+        let api = "https://customgpt-lofg.onrender.com/result/";
         let response = await axios.get(api + input, { 
           text: input
         })
