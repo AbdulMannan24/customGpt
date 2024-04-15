@@ -9,7 +9,8 @@ function App() {
   const [placeholder, setPlaceholder] = useState("Enter here...");
   async function fetchOutput() {
     try {
-        let api = "https://customgpt-lofg.onrender.com/result/";
+        // let api = "https://customgpt-lofg.onrender.com/result/?input=";
+        let api = "http://localhost:3000/result/?input="
         let response = await axios.get(api + input, { 
           text: input
         })
@@ -19,7 +20,7 @@ function App() {
         }
     } catch (error) {
       console.log(error);
-      window.alert("Backend Error");
+      window.alert(response.data.message);
     }
   }
   return (
